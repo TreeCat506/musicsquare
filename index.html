@@ -3218,6 +3218,22 @@
         audioLevel = 0;
         playNext('next');
       });
+      dom.audio.addEventListener('error', () => {
+       audioLevel = 0;
+       if(state.currentTrack){
+         showToast('播放失敗，自動跳下一首...');
+         setTimeout(()=> playNext('next'), 1500);
+         }
+      });
+
+      dom.audio.addEventListener('stalled', () => {
+       setTimeout(()=>{
+         if(state.isPlaying && dom.audio.readyState < 3){
+           showToast('載入停頓，自動跳下一首...');
+           playNext('next');
+         }
+        }, 4000);
+      });
 
       dom.progressWrapper.addEventListener('click',e=>{
         const rect=dom.progressWrapper.getBoundingClientRect();
