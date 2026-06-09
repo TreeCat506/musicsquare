@@ -3,8 +3,11 @@
 </p>
 
 <p align="center">
-  <strong>学习收获更多有趣的内容, 欢迎关注微信公众号：Charles的皮卡丘</strong>
+  <strong>學習收穫更多有趣的內容, 歡迎關注微信公眾號：Charles的皮卡丘</strong>
 </p>
+
+# 修改項目
+-2026/6/9 簡轉繁，新增變更背景圖片按鈕，新增ICON
 
 # 🌟 Overview
 
