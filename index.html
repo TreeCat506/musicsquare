@@ -676,6 +676,9 @@
       width:40px;
       height:40px;
       font-size:18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
     .control-secondary {
       display:flex;
@@ -1353,9 +1356,9 @@
               </div>
               <div class="control-row">
                 <div class="control-main">
-                  <button id="prev-btn" class="btn btn-secondary btn-icon ripple-target" title="上一首 (P)">⏮</button>
-                  <button id="play-btn" class="btn play-btn ripple-target" title="播放/暂停 (Space)">▶</button>
-                  <button id="next-btn" class="btn btn-secondary btn-icon ripple-target" title="下一首 (N)">⏭</button>
+                  <button id="prev-btn" class="btn btn-secondary btn-icon ripple-target" title="上一首 (P)"><img src="icons/prev.svg" width="20" height="20"></button>
+                  <button id="play-btn" class="btn play-btn ripple-target" title="播放/暂停 (Space)"><img id="play-icon" src="icons/play.svg" width="40" height="40"></button>
+                  <button id="next-btn" class="btn btn-secondary btn-icon ripple-target" title="下一首 (N)"><img src="icons/next.svg" width="20" height="20"></button>
                 </div>
                 <div class="control-secondary">
                   <span>🔊</span>
@@ -2665,7 +2668,7 @@
         dom.audio.src=track.audioUrl;
         await dom.audio.play();
         state.isPlaying=true;
-        dom.playBtn.textContent='⏸';
+        document.getElementById('play-icon').src='icons/pause.svg';
         dom.playerStatus.textContent=t('playerStatusPlaying');
       }catch(e){
         console.error(e);
@@ -2919,9 +2922,10 @@
         wrap.appendChild(item);
       });
 
-      const playingEl=wrap.querySelector('.track-item.playing');
-      if(playingEl){
-        playingEl.scrollIntoView({block:'center',behavior:'smooth'});
+        const playingEl=wrap.querySelector('.track-item.playing');
+        if(playingEl){
+         const container=wrap.parentElement;
+         container.scrollTop = playingEl.offsetTop - container.clientHeight * 0.45;
       }
     }
 
@@ -3205,12 +3209,12 @@
       });
       dom.audio.addEventListener('play',()=>{
         state.isPlaying=true;
-        dom.playBtn.textContent='⏸';
+        document.getElementById('play-icon').src='icons/pause.svg';
         dom.playerStatus.textContent=t('playerStatusPlaying');
       });
       dom.audio.addEventListener('pause',()=>{
         state.isPlaying=false;
-        dom.playBtn.textContent='▶';
+        document.getElementById('play-icon').src='icons/play.svg';
         dom.playerStatus.textContent=t('playerStatusPaused');
         audioLevel = 0;
       });
