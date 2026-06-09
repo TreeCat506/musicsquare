@@ -16,7 +16,7 @@ It provides a lightweight, browser-friendly interface to search, play, and downl
 
 This GitHub Pages deployment is available at:
 
-👉 **Live URL:** <https://charlespikachu.github.io/musicsquare/>
+👉 **Live URL:** <https://treecat506.github.io/musicsquare/>
 
 
 ## ✨ Key Features
